@@ -1,64 +1,63 @@
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Family Smile — Campaign Studio</title>
+<title>Family Smile Master Editor</title>
 <style>
-:root{--pink:#ef0069;--navy:#074c93;--cyan:#48c7df;--yellow:#ffdf39;--teal:#22b8a8;--orange:#f4a41b}
-*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:#edf1f5;color:#17324d}
-.app{display:grid;grid-template-columns:360px 1fr;min-height:100vh}.panel{height:100vh;overflow:auto;background:white;padding:20px;box-shadow:2px 0 18px #0002;z-index:3}
-.panel h2{margin:0 0 4px}.hint{font-size:12px;color:#68798a;margin-bottom:14px}label{font-size:12px;font-weight:800;display:block;margin:10px 0 4px}input{width:100%;padding:9px;border:1px solid #d8e0e8;border-radius:9px}
-.icons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.icon{border:1px solid #dce3ea;border-radius:11px;padding:7px;text-align:center;font-size:10px;cursor:pointer}.icon svg{width:38px;height:38px;color:var(--navy)}.icon.active{outline:3px solid var(--cyan)}
-.palettes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.palette{height:66px;border-radius:10px;padding:5px;cursor:pointer;background:#eee;display:grid;grid-template-rows:1fr 1fr;gap:3px}.palette div{border-radius:5px}.palette.active{outline:3px solid #222}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}button{border:0;border-radius:9px;padding:10px;background:#074c93;color:white;font-weight:800;cursor:pointer}.secondary{background:#65798d}
-.stage{display:flex;justify-content:center;padding:28px;overflow:auto}.sheet{width:620px;height:1102px;filter:drop-shadow(0 16px 25px #0003)}
-#poster{width:100%;height:100%;display:block}
-@media(max-width:900px){.app{grid-template-columns:1fr}.panel{height:auto}.stage{padding:10px}}
+:root{--theme:#f30070;--blue:#0964ae;--yellow:#ffdf25}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#edf1f5;color:#17324d}.app{display:grid;grid-template-columns:370px 1fr;min-height:100vh}.panel{height:100vh;overflow:auto;background:#fff;padding:20px;box-shadow:2px 0 18px #0002;z-index:5}.panel h2{margin:0 0 5px}.hint{font-size:12px;color:#66788a;margin-bottom:14px;line-height:1.4}label{font-size:12px;font-weight:800;display:block;margin:10px 0 4px}input,select{width:100%;padding:9px;border:1px solid #d7e0e8;border-radius:9px}.palettes{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.pal{cursor:pointer;text-align:center;font-size:10px;font-weight:800}.thumb{height:78px;border-radius:8px;background-size:cover;background-position:center;border:2px solid #fff;box-shadow:0 0 0 1px #ccd}.pal.active .thumb{outline:3px solid #111}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}button{padding:10px;border:0;border-radius:9px;background:#075da8;color:#fff;font-weight:800;cursor:pointer}.secondary{background:#66798a}
+.stage{display:flex;justify-content:center;align-items:flex-start;padding:24px;overflow:auto}.poster{position:relative;width:min(768px,calc(100vw - 430px));aspect-ratio:2/3;background:url('/assets/templates/fucsia.jpg') center/100% 100% no-repeat;box-shadow:0 18px 40px #0003;overflow:hidden}.overlay{position:absolute;display:none;text-align:center;font-weight:900;line-height:1.02}.overlay.on{display:flex;align-items:center;justify-content:center}.brushWhite{background:#fff;color:var(--theme);clip-path:polygon(2% 15%,97% 4%,100% 87%,4% 96%)}.brushBlue{background:var(--blue);color:#fff;clip-path:polygon(1% 7%,98% 0,100% 90%,3% 100%)}.plainWhite{background:#fff;color:var(--theme);border-radius:18px}.priceMask{background:var(--yellow);color:var(--theme);border-radius:50%}.contactMask{background:var(--blue);color:#fff;border-radius:18px}.addressMask{background:#fff;color:#07549b;border-radius:18px}
+#monthO{left:17%;top:18.0%;width:66%;height:12%;font-size:clamp(28px,6vw,64px)}
+#dateO{left:17%;top:45.1%;width:61%;height:5.3%;font-size:clamp(14px,2.5vw,27px)}
+#offerO{left:8%;top:50.7%;width:78%;height:7%;font-size:clamp(23px,4vw,46px);color:#fff}
+#serviceO{left:5.5%;top:63.3%;width:72%;height:14.7%;font-size:clamp(14px,2.4vw,27px);padding:3%;color:#07549b;background:#fff;border-radius:12px}
+#serviceO small{display:block;color:var(--theme);margin-top:7%;font-size:.72em}
+#priceO{left:73.5%;top:63.0%;width:20%;aspect-ratio:1;font-size:clamp(28px,5vw,58px)}
+#ctaO{left:4%;top:82.0%;width:39%;height:7%;font-size:clamp(18px,3vw,34px)}
+#phoneO{left:43.5%;top:82.1%;width:49%;height:6.8%;font-size:clamp(15px,2.5vw,28px)}
+#addressO{left:38%;top:91.0%;width:55%;height:5.2%;font-size:clamp(12px,2vw,22px)}
+@media(max-width:900px){.app{grid-template-columns:1fr}.panel{height:auto}.poster{width:min(94vw,768px)}.stage{padding:10px}}
 </style></head><body>
-<div class="app"><aside class="panel"><h2>Family Smile Campaign Studio</h2><div class="hint">La composizione resta bloccata. Modifica solo contenuti, icona e palette.</div>
-<label>Mese</label><input data-id="monthText" value="Ottobre"><label>Periodo</label><input data-id="dateText" value="dal 01 al 31 Ottobre"><label>Nome campagna</label><input data-id="offerText" value="Sorriso In Salute">
-<label>Prestazione</label><input data-id="serviceText" value="Check-up dentistico completo e Ortopanoramica"><label>Descrizione</label><input data-id="descText" value="inclusi nella seduta di igiene"><label>Prezzo</label><input data-id="priceText" value="90€"><label>WhatsApp</label><input data-id="phoneText" value="3471234567"><label>Indirizzo</label><input data-id="addressText" value="Via Sono Prova 19">
-<label>Icona prestazione</label><div class="icons" id="icons"></div><label>Variante colore</label><div class="palettes" id="palettes"></div>
-<div class="actions"><button id="png">PNG HD</button><button id="pdf">PDF A4</button><button class="secondary" id="save">Salva preset</button><button class="secondary" id="load">Carica preset</button></div></aside>
-<main class="stage"><div class="sheet">
-<svg id="poster" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 1102">
-<rect width="620" height="1102" rx="8" fill="var(--pink)"/>
-<!-- playful doodles -->
-<g fill="none" stroke="#fff" stroke-width="4" opacity=".9"><path d="M35 96c20-25 36-5 22 10s-30 1-17-13 34 2 18 22"/><path d="M540 165c25-15 42 5 25 22s-36-1-16-18"/><path d="M37 720c22-20 35 0 20 14s-28-3-12-15"/><path d="M560 850c20-18 35 0 18 15"/></g>
-<g font-family="Arial" text-anchor="middle"><text x="310" y="62" font-size="38" font-weight="900" fill="#fff">♡ Family <tspan fill="var(--cyan)">Smile</tspan></text><text x="310" y="88" font-size="12" font-weight="700" letter-spacing="5" fill="#fff">STUDIO ODONTOIATRICO</text></g>
-<!-- brush-style header -->
-<path d="M75 125 Q310 103 548 130 L538 205 Q310 218 82 202Z" fill="#fff"/>
-<text id="monthText" x="310" y="183" text-anchor="middle" font-family="Arial" font-size="66" font-weight="900" fill="var(--pink)">Ottobre</text>
-<path d="M55 218 Q300 205 566 225 L552 344 Q305 358 67 339Z" fill="var(--navy)"/>
-<text x="310" y="267" text-anchor="middle" font-family="Arial" font-size="31" font-weight="900" fill="#fff">Mese della</text><text x="310" y="322" text-anchor="middle" font-family="Arial" font-size="47" font-weight="900" fill="#fff">PREVENZIONE</text>
-<rect x="120" y="367" width="380" height="54" rx="18" fill="#fff"/><text id="dateText" x="310" y="402" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="var(--pink)">dal 01 al 31 Ottobre</text>
-<text id="offerText" x="310" y="475" text-anchor="middle" font-family="Arial" font-size="42" font-weight="900" fill="#fff">Sorriso In Salute</text>
-<!-- service card -->
-<rect x="50" y="505" width="520" height="230" rx="28" fill="#fff"/>
-<g id="serviceIcon" transform="translate(75 530) scale(.95)" color="var(--navy)"></g>
-<text id="serviceText" x="310" y="625" text-anchor="middle" font-family="Arial" font-size="23" font-weight="800" fill="var(--navy)">Check-up dentistico completo e Ortopanoramica</text>
-<text id="descText" x="310" y="680" text-anchor="middle" font-family="Arial" font-size="20" font-weight="800" fill="var(--pink)">inclusi nella seduta di igiene</text>
-<!-- price sticker -->
-<g transform="translate(470 680) rotate(8)"><circle cx="0" cy="0" r="76" fill="var(--yellow)"/><path d="M-50-58l-14-16M-66-43l-20-5M55-53l15-17M66-31l19-3" stroke="#fff" stroke-width="5"/><text id="priceText" x="0" y="18" text-anchor="middle" font-family="Arial" font-size="52" font-weight="900" fill="var(--pink)">90€</text></g>
-<!-- CTA -->
-<path d="M52 785 Q185 770 305 786 L298 854 Q180 865 58 850Z" fill="#fff"/><text x="180" y="828" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="var(--pink)">Prenota subito!</text>
-<rect x="322" y="785" width="248" height="67" rx="22" fill="var(--navy)"/><circle cx="357" cy="818" r="20" fill="#22bf5b"/><text x="357" y="826" text-anchor="middle" font-family="Arial" font-size="22" font-weight="900" fill="#fff">☎</text><text id="phoneText" x="458" y="827" text-anchor="middle" font-family="Arial" font-size="23" font-weight="900" fill="#fff">3471234567</text>
-<!-- bottom blocks -->
-<g font-family="Arial" font-weight="900" font-size="17" fill="#fff"><rect x="48" y="895" width="170" height="40" rx="7" fill="var(--navy)"/><text x="133" y="921" text-anchor="middle">♡ SORRISI</text><rect x="48" y="940" width="170" height="40" rx="7" fill="var(--teal)"/><text x="133" y="966" text-anchor="middle">♡ SALUTE</text><rect x="48" y="985" width="170" height="40" rx="7" fill="var(--orange)"/><text x="133" y="1011" text-anchor="middle">♡ FAMIGLIA</text></g>
-<text x="402" y="930" text-anchor="middle" font-family="Arial" font-size="19" font-weight="800" fill="#fff">La salute del tuo sorriso</text><text x="402" y="956" text-anchor="middle" font-family="Arial" font-size="19" font-weight="800" fill="#fff">è la nostra priorità</text>
-<!-- address bottom right -->
-<rect x="292" y="995" width="278" height="56" rx="18" fill="#fff"/><g transform="translate(314 1009)" fill="var(--pink)"><path d="M14 0C6 0 0 6 0 14c0 11 14 27 14 27s14-16 14-27C28 6 22 0 14 0zm0 20a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></g><text id="addressText" x="447" y="1030" text-anchor="middle" font-family="Arial" font-size="19" font-weight="800" fill="var(--navy)">Via Sono Prova 19</text>
-</svg></div></main></div>
+<div class="app"><aside class="panel"><h2>Family Smile — Master Editor</h2>
+<div class="hint"><b>Il master grafico è l'immagine approvata.</b> All'apertura non viene ricostruita: viene mostrata identica. Un campo viene coperto e ridisegnato solo quando lo modifichi.</div>
+<label>Variante colore</label><div class="palettes" id="palettes"></div>
+<label>Mese</label><input data-field="month" value="Ottobre"><label>Periodo</label><input data-field="date" value="dal 01 al 31 Ottobre">
+<label>Campagna</label><input data-field="offer" value="Sorriso In Salute"><label>Prestazione</label><input data-field="service" value="Check-up dentistico completo + Ortopanoramica">
+<label>Descrizione</label><input data-field="desc" value="inclusi nella seduta di igiene"><label>Prezzo</label><input data-field="price" value="90€">
+<label>WhatsApp</label><input data-field="phone" value="3471234567"><label>Indirizzo</label><input data-field="address" value="Via Sono Prova 19">
+<div class="actions"><button id="pngBtn">PNG HD</button><button id="pdfBtn">PDF A4</button><button class="secondary" id="resetBtn">Ripristina master</button><button class="secondary" id="saveBtn">Salva preset</button></div></aside>
+<main class="stage"><div class="poster" id="poster">
+<div class="overlay brushWhite" id="monthO"></div><div class="overlay plainWhite" id="dateO"></div><div class="overlay" id="offerO"></div>
+<div class="overlay" id="serviceO"><div><span id="serviceTxt"></span><small id="descTxt"></small></div></div>
+<div class="overlay priceMask" id="priceO"></div><div class="overlay brushWhite" id="ctaO">Prenota subito!</div>
+<div class="overlay contactMask" id="phoneO"></div><div class="overlay addressMask" id="addressO"></div>
+</div></main></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 <script>
-const iconDefs=[['checkup','Check-up'],['whitening','Sbiancamento'],['hygiene','Igiene'],['ortho','Ortodonzia'],['implant','Implantologia'],['pediatric','Pediatrica']]; let selectedIcon='checkup';
-async function svgText(n){return fetch('/assets/icons/'+n+'.svg').then(r=>r.text())}
-async function setIcon(n){selectedIcon=n;let s=await svgText(n);serviceIcon.innerHTML=s.replace('<svg ','<svg x="0" y="0" width="100" height="100" ');document.querySelectorAll('.icon').forEach(e=>e.classList.toggle('active',e.dataset.n===n))}
-(async()=>{for(const [n,l] of iconDefs){let d=document.createElement('div');d.className='icon';d.dataset.n=n;d.innerHTML=(await svgText(n))+'<div>'+l+'</div>';d.onclick=()=>setIcon(n);icons.appendChild(d)}setIcon('checkup')})();
-const pals=[['Fucsia','#ef0069','#074c93','#48c7df','#ffdf39'],['Blu','#137ac1','#063f7d','#5ed8ef','#ffdf39'],['Acqua','#12aa9c','#076f79','#6de1d6','#ffd94a'],['Arancio','#f36b21','#a43c18','#ffd07a','#ffe14a'],['Viola','#9b2bd3','#54258a','#d99aff','#ffdf39']];
-pals.forEach((p,i)=>{let d=document.createElement('div');d.className='palette'+(i===0?' active':'');d.title=p[0];d.innerHTML=`<div style="background:${p[1]}"></div><div style="background:${p[2]}"></div>`;d.onclick=()=>{['--pink','--navy','--cyan','--yellow'].forEach((k,j)=>document.documentElement.style.setProperty(k,p[j+1]));document.querySelectorAll('.palette').forEach(x=>x.classList.remove('active'));d.classList.add('active')};palettes.appendChild(d)});
-document.querySelectorAll('[data-id]').forEach(i=>i.oninput=e=>document.getElementById(e.target.dataset.id).textContent=e.target.value);
-function svgBlob(){let s=new XMLSerializer().serializeToString(poster);return new Blob([s],{type:'image/svg+xml;charset=utf-8'})}
-async function render(scale=4){let url=URL.createObjectURL(svgBlob()),img=new Image();await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});let c=document.createElement('canvas');c.width=620*scale;c.height=1102*scale;let ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);return c}
-png.onclick=async()=>{let c=await render(4),a=document.createElement('a');a.download='family-smile-campagna-HD.png';a.href=c.toDataURL('image/png');a.click()};
-pdf.onclick=async()=>{let c=await render(4),{jsPDF}=window.jspdf,p=new jsPDF({unit:'mm',format:'a4'});p.addImage(c.toDataURL('image/jpeg',.98),'JPEG',0,0,210,297);p.save('family-smile-campagna-A4.pdf')};
-save.onclick=()=>{let d={icon:selectedIcon,fields:{}};document.querySelectorAll('[data-id]').forEach(x=>d.fields[x.dataset.id]=x.value);localStorage.setItem('fsPreset',JSON.stringify(d));alert('Preset salvato')};
-load.onclick=()=>{let d=JSON.parse(localStorage.getItem('fsPreset')||'null');if(!d)return alert('Nessun preset');Object.entries(d.fields).forEach(([k,v])=>{let i=document.querySelector(`[data-id="${k}"]`);if(i){i.value=v;document.getElementById(k).textContent=v}});setIcon(d.icon||'checkup')};
+const themes={
+ fucsia:{file:'fucsia.jpg',theme:'#f30070',blue:'#0964ae',yellow:'#ffdf25'},
+ blu:{file:'blu.jpg',theme:'#137bc3',blue:'#063f7d',yellow:'#ffdf25'},
+ acqua:{file:'acqua.jpg',theme:'#0aa99b',blue:'#08727b',yellow:'#ffda35'},
+ arancio:{file:'arancio.jpg',theme:'#f06a21',blue:'#a8401c',yellow:'#ffe13d'},
+ viola:{file:'viola.jpg',theme:'#9a2bd1',blue:'#54258a',yellow:'#ffdf25'}
+};
+let current='fucsia', dirty={};
+const labels={fucsia:'Fucsia',blu:'Blu',acqua:'Acqua',arancio:'Arancio',viola:'Viola'};
+Object.entries(themes).forEach(([k,t],i)=>{let d=document.createElement('div');d.className='pal'+(i===0?' active':'');d.innerHTML=`<div class="thumb" style="background-image:url('/assets/templates/${t.file}')"></div><div>${labels[k]}</div>`;d.onclick=()=>applyTheme(k,d);palettes.appendChild(d)});
+function applyTheme(k,d){current=k;let t=themes[k];poster.style.backgroundImage=`url('/assets/templates/${t.file}')`;document.documentElement.style.setProperty('--theme',t.theme);document.documentElement.style.setProperty('--blue',t.blue);document.documentElement.style.setProperty('--yellow',t.yellow);document.querySelectorAll('.pal').forEach(x=>x.classList.remove('active'));d?.classList.add('active')}
+function activate(field,val){
+ dirty[field]=true;
+ if(field==='month'){monthO.textContent=val;monthO.classList.add('on')}
+ if(field==='date'){dateO.textContent=val;dateO.classList.add('on')}
+ if(field==='offer'){offerO.textContent=val;offerO.classList.add('on')}
+ if(field==='service'){serviceTxt.textContent=val;serviceO.classList.add('on')}
+ if(field==='desc'){descTxt.textContent=val;serviceO.classList.add('on')}
+ if(field==='price'){priceO.textContent=val;priceO.classList.add('on')}
+ if(field==='phone'){phoneO.textContent='☎  '+val;phoneO.classList.add('on')}
+ if(field==='address'){addressO.textContent='📍  '+val;addressO.classList.add('on')}
+}
+document.querySelectorAll('[data-field]').forEach(i=>i.addEventListener('input',e=>activate(e.target.dataset.field,e.target.value)));
+resetBtn.onclick=()=>{dirty={};document.querySelectorAll('.overlay').forEach(x=>x.classList.remove('on'));document.querySelectorAll('[data-field]').forEach(x=>x.value={month:'Ottobre',date:'dal 01 al 31 Ottobre',offer:'Sorriso In Salute',service:'Check-up dentistico completo + Ortopanoramica',desc:'inclusi nella seduta di igiene',price:'90€',phone:'3471234567',address:'Via Sono Prova 19'}[x.dataset.field]);applyTheme('fucsia',document.querySelector('.pal'))}
+async function capture(scale=3){return html2canvas(poster,{scale,useCORS:true,backgroundColor:null})}
+pngBtn.onclick=async()=>{let c=await capture(3),a=document.createElement('a');a.download='family-smile-volantino-HD.png';a.href=c.toDataURL('image/png',1);a.click()}
+pdfBtn.onclick=async()=>{let c=await capture(3),{jsPDF}=window.jspdf,p=new jsPDF({unit:'mm',format:'a4'});p.addImage(c.toDataURL('image/jpeg',.98),'JPEG',0,0,210,297);p.save('family-smile-volantino-A4.pdf')}
+saveBtn.onclick=()=>{let data={theme:current,dirty,values:{}};document.querySelectorAll('[data-field]').forEach(x=>data.values[x.dataset.field]=x.value);localStorage.setItem('fsMasterPreset',JSON.stringify(data));alert('Preset salvato nel browser')}
 </script></body></html>
