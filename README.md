@@ -1,10 +1,5 @@
-# Family Smile — Editor fedele
-Usa il master approvato come base e sostituisce solo le zone testuali interne, mantenendo pennellate, illustrazioni e composizione.
+# Family Smile Editor V2
 
-Avvio:
-```bash
-docker compose up -d --build
-```
-URL LAN: `http://IP-SERVER:8191`
+Avvio: `docker compose up -d --build --force-recreate`
 
-Nota: i font brush (Kalam/Permanent Marker) e le librerie di export sono caricati da CDN.
+URL: `http://IP-SERVER:8191`
