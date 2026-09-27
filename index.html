@@ -1,63 +1,60 @@
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Family Smile Master Editor</title>
+<title>Family Smile — Editor Fedele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Permanent+Marker&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{--theme:#f30070;--blue:#0964ae;--yellow:#ffdf25}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#edf1f5;color:#17324d}.app{display:grid;grid-template-columns:370px 1fr;min-height:100vh}.panel{height:100vh;overflow:auto;background:#fff;padding:20px;box-shadow:2px 0 18px #0002;z-index:5}.panel h2{margin:0 0 5px}.hint{font-size:12px;color:#66788a;margin-bottom:14px;line-height:1.4}label{font-size:12px;font-weight:800;display:block;margin:10px 0 4px}input,select{width:100%;padding:9px;border:1px solid #d7e0e8;border-radius:9px}.palettes{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.pal{cursor:pointer;text-align:center;font-size:10px;font-weight:800}.thumb{height:78px;border-radius:8px;background-size:cover;background-position:center;border:2px solid #fff;box-shadow:0 0 0 1px #ccd}.pal.active .thumb{outline:3px solid #111}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}button{padding:10px;border:0;border-radius:9px;background:#075da8;color:#fff;font-weight:800;cursor:pointer}.secondary{background:#66798a}
-.stage{display:flex;justify-content:center;align-items:flex-start;padding:24px;overflow:auto}.poster{position:relative;width:min(768px,calc(100vw - 430px));aspect-ratio:2/3;background:url('/assets/templates/fucsia.jpg') center/100% 100% no-repeat;box-shadow:0 18px 40px #0003;overflow:hidden}.overlay{position:absolute;display:none;text-align:center;font-weight:900;line-height:1.02}.overlay.on{display:flex;align-items:center;justify-content:center}.brushWhite{background:#fff;color:var(--theme);clip-path:polygon(2% 15%,97% 4%,100% 87%,4% 96%)}.brushBlue{background:var(--blue);color:#fff;clip-path:polygon(1% 7%,98% 0,100% 90%,3% 100%)}.plainWhite{background:#fff;color:var(--theme);border-radius:18px}.priceMask{background:var(--yellow);color:var(--theme);border-radius:50%}.contactMask{background:var(--blue);color:#fff;border-radius:18px}.addressMask{background:#fff;color:#07549b;border-radius:18px}
-#monthO{left:17%;top:18.0%;width:66%;height:12%;font-size:clamp(28px,6vw,64px)}
-#dateO{left:17%;top:45.1%;width:61%;height:5.3%;font-size:clamp(14px,2.5vw,27px)}
-#offerO{left:8%;top:50.7%;width:78%;height:7%;font-size:clamp(23px,4vw,46px);color:#fff}
-#serviceO{left:5.5%;top:63.3%;width:72%;height:14.7%;font-size:clamp(14px,2.4vw,27px);padding:3%;color:#07549b;background:#fff;border-radius:12px}
-#serviceO small{display:block;color:var(--theme);margin-top:7%;font-size:.72em}
-#priceO{left:73.5%;top:63.0%;width:20%;aspect-ratio:1;font-size:clamp(28px,5vw,58px)}
-#ctaO{left:4%;top:82.0%;width:39%;height:7%;font-size:clamp(18px,3vw,34px)}
-#phoneO{left:43.5%;top:82.1%;width:49%;height:6.8%;font-size:clamp(15px,2.5vw,28px)}
-#addressO{left:38%;top:91.0%;width:55%;height:5.2%;font-size:clamp(12px,2vw,22px)}
-@media(max-width:900px){.app{grid-template-columns:1fr}.panel{height:auto}.poster{width:min(94vw,768px)}.stage{padding:10px}}
-</style></head><body>
-<div class="app"><aside class="panel"><h2>Family Smile — Master Editor</h2>
-<div class="hint"><b>Il master grafico è l'immagine approvata.</b> All'apertura non viene ricostruita: viene mostrata identica. Un campo viene coperto e ridisegnato solo quando lo modifichi.</div>
-<label>Variante colore</label><div class="palettes" id="palettes"></div>
-<label>Mese</label><input data-field="month" value="Ottobre"><label>Periodo</label><input data-field="date" value="dal 01 al 31 Ottobre">
-<label>Campagna</label><input data-field="offer" value="Sorriso In Salute"><label>Prestazione</label><input data-field="service" value="Check-up dentistico completo + Ortopanoramica">
-<label>Descrizione</label><input data-field="desc" value="inclusi nella seduta di igiene"><label>Prezzo</label><input data-field="price" value="90€">
-<label>WhatsApp</label><input data-field="phone" value="3471234567"><label>Indirizzo</label><input data-field="address" value="Via Sono Prova 19">
-<div class="actions"><button id="pngBtn">PNG HD</button><button id="pdfBtn">PDF A4</button><button class="secondary" id="resetBtn">Ripristina master</button><button class="secondary" id="saveBtn">Salva preset</button></div></aside>
+:root{--pink:#ef0069;--blue:#0872bd;--cyan:#38c8eb;--yellow:#ffe02f}
+*{box-sizing:border-box}body{margin:0;font-family:Nunito,Arial,sans-serif;background:#edf1f5;color:#17324d}.app{display:grid;grid-template-columns:380px 1fr;min-height:100vh}.panel{height:100vh;overflow:auto;background:#fff;padding:20px;box-shadow:2px 0 18px #0002;z-index:4}.panel h2{margin:0}.hint{font-size:12px;color:#66788a;line-height:1.45;margin:5px 0 15px}label{display:block;font-size:12px;font-weight:900;margin:9px 0 3px}input,select{width:100%;padding:9px;border:1px solid #d7e0e8;border-radius:9px;font:inherit}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.palettes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.pal{font-size:10px;text-align:center;font-weight:900;cursor:pointer}.thumb{height:70px;background-size:cover;background-position:center;border-radius:8px;border:2px solid #fff;box-shadow:0 0 0 1px #ccd}.pal.active .thumb{outline:3px solid #ed0068}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}button{padding:10px;border:0;border-radius:9px;background:#075da8;color:#fff;font-weight:900;cursor:pointer}.secondary{background:#687c8f}
+.stage{display:flex;justify-content:center;padding:22px;overflow:auto}.poster{position:relative;width:min(720px,calc(100vw - 430px));aspect-ratio:2/3;background:center/100% 100% no-repeat;box-shadow:0 18px 40px #0003;overflow:hidden}
+.field{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.02}
+.erase-white{background:#fff}.erase-pink{background:var(--pink)}.erase-blue{background:#0872bd}.erase-yellow{background:#ffe02f}
+.brush{font-family:"Kalam","Comic Sans MS",cursive;font-weight:700}.marker{font-family:"Permanent Marker","Arial Black",sans-serif}.rounded{font-family:Nunito,Arial,sans-serif;font-weight:900}
+#month{left:23%;top:20.5%;width:55%;height:9.2%;font-size:clamp(34px,6vw,69px);color:var(--pink);transform:rotate(-1deg)}
+#dates{left:27%;top:45.3%;width:48%;height:4.7%;font-size:clamp(15px,2.25vw,27px);color:var(--pink);border-radius:8px}
+#offer{left:10%;top:51.6%;width:75%;height:7.5%;font-size:clamp(25px,4.2vw,49px);color:#fff;transform:rotate(-2deg)}
+#service1{left:12%;top:65.0%;width:25%;height:7.8%;font-size:clamp(12px,2.0vw,24px);color:#07549b;transform:rotate(-3deg)}
+#service2{left:40%;top:66.2%;width:31%;height:6.2%;font-size:clamp(12px,1.8vw,22px);color:#07549b;transform:rotate(-2deg)}
+#desc{left:14%;top:73.0%;width:53%;height:4.6%;font-size:clamp(12px,1.8vw,22px);color:var(--pink);transform:rotate(-2deg)}
+#price{left:74%;top:65.0%;width:18%;height:9.2%;font-size:clamp(34px,5vw,61px);color:var(--pink);border-radius:45%;transform:rotate(5deg)}
+#phone{left:62%;top:83.1%;width:29%;height:4.8%;font-size:clamp(14px,2vw,25px);color:#fff;transform:rotate(-2deg)}
+#address{left:48%;top:91.7%;width:41%;height:4.3%;font-size:clamp(12px,1.65vw,20px);color:#07549b;border-radius:10px}
+.erase-tight{box-shadow:0 0 8px 7px var(--erase)}
+.note{padding:9px;border-radius:9px;background:#f3f7fb;font-size:11px;margin-top:12px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.panel{height:auto}.poster{width:min(96vw,720px)}.stage{padding:8px}}
+</style></head><body><div class="app"><aside class="panel"><h2>Family Smile — Editor fedele</h2>
+<div class="hint">Il master approvato resta lo sfondo. Le scritte variabili vengono sostituite <b>dentro le stesse aree</b>, con font brush coerenti e ridimensionamento automatico.</div>
+<label>Varianti colore</label><div class="palettes" id="palettes"></div>
+<div class="row"><div><label>Mese</label><input data-k="month" value="Ottobre"></div><div><label>Periodo</label><input data-k="dates" value="dal 01 al 31 Ottobre"></div></div>
+<label>Campagna</label><input data-k="offer" value="Sorriso In Salute">
+<div class="row"><div><label>Prestazione 1</label><input data-k="service1" value="Check-up dentistico completo"></div><div><label>Prestazione 2</label><input data-k="service2" value="Ortopanoramica"></div></div>
+<label>Nota</label><input data-k="desc" value="inclusi nella seduta di igiene">
+<div class="row"><div><label>Prezzo</label><input data-k="price" value="90€"></div><div><label>WhatsApp</label><input data-k="phone" value="3471234567"></div></div>
+<label>Indirizzo</label><input data-k="address" value="Via Sono Prova 19">
+<div class="actions"><button id="png">PNG HD</button><button id="pdf">PDF A4</button><button class="secondary" id="save">Salva preset</button><button class="secondary" id="reset">Ripristina</button></div>
+<div class="note">Il ridimensionamento automatico riduce il font finché la nuova frase entra nell'area originale, evitando etichette sovrapposte o testo tagliato.</div></aside>
 <main class="stage"><div class="poster" id="poster">
-<div class="overlay brushWhite" id="monthO"></div><div class="overlay plainWhite" id="dateO"></div><div class="overlay" id="offerO"></div>
-<div class="overlay" id="serviceO"><div><span id="serviceTxt"></span><small id="descTxt"></small></div></div>
-<div class="overlay priceMask" id="priceO"></div><div class="overlay brushWhite" id="ctaO">Prenota subito!</div>
-<div class="overlay contactMask" id="phoneO"></div><div class="overlay addressMask" id="addressO"></div>
+<div id="month" class="field erase-white brush">Ottobre</div>
+<div id="dates" class="field erase-white brush">dal 01 al 31 Ottobre</div>
+<div id="offer" class="field erase-pink brush">Sorriso In Salute</div>
+<div id="service1" class="field erase-white brush">Check-up dentistico completo</div>
+<div id="service2" class="field erase-white brush">Ortopanoramica</div>
+<div id="desc" class="field erase-white brush">inclusi nella seduta di igiene</div>
+<div id="price" class="field erase-yellow marker">90€</div>
+<div id="phone" class="field erase-blue brush">3471234567</div>
+<div id="address" class="field erase-white rounded">Via Sono Prova 19</div>
 </div></main></div>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 <script>
-const themes={
- fucsia:{file:'fucsia.jpg',theme:'#f30070',blue:'#0964ae',yellow:'#ffdf25'},
- blu:{file:'blu.jpg',theme:'#137bc3',blue:'#063f7d',yellow:'#ffdf25'},
- acqua:{file:'acqua.jpg',theme:'#0aa99b',blue:'#08727b',yellow:'#ffda35'},
- arancio:{file:'arancio.jpg',theme:'#f06a21',blue:'#a8401c',yellow:'#ffe13d'},
- viola:{file:'viola.jpg',theme:'#9a2bd1',blue:'#54258a',yellow:'#ffdf25'}
-};
-let current='fucsia', dirty={};
-const labels={fucsia:'Fucsia',blu:'Blu',acqua:'Acqua',arancio:'Arancio',viola:'Viola'};
-Object.entries(themes).forEach(([k,t],i)=>{let d=document.createElement('div');d.className='pal'+(i===0?' active':'');d.innerHTML=`<div class="thumb" style="background-image:url('/assets/templates/${t.file}')"></div><div>${labels[k]}</div>`;d.onclick=()=>applyTheme(k,d);palettes.appendChild(d)});
-function applyTheme(k,d){current=k;let t=themes[k];poster.style.backgroundImage=`url('/assets/templates/${t.file}')`;document.documentElement.style.setProperty('--theme',t.theme);document.documentElement.style.setProperty('--blue',t.blue);document.documentElement.style.setProperty('--yellow',t.yellow);document.querySelectorAll('.pal').forEach(x=>x.classList.remove('active'));d?.classList.add('active')}
-function activate(field,val){
- dirty[field]=true;
- if(field==='month'){monthO.textContent=val;monthO.classList.add('on')}
- if(field==='date'){dateO.textContent=val;dateO.classList.add('on')}
- if(field==='offer'){offerO.textContent=val;offerO.classList.add('on')}
- if(field==='service'){serviceTxt.textContent=val;serviceO.classList.add('on')}
- if(field==='desc'){descTxt.textContent=val;serviceO.classList.add('on')}
- if(field==='price'){priceO.textContent=val;priceO.classList.add('on')}
- if(field==='phone'){phoneO.textContent='☎  '+val;phoneO.classList.add('on')}
- if(field==='address'){addressO.textContent='📍  '+val;addressO.classList.add('on')}
-}
-document.querySelectorAll('[data-field]').forEach(i=>i.addEventListener('input',e=>activate(e.target.dataset.field,e.target.value)));
-resetBtn.onclick=()=>{dirty={};document.querySelectorAll('.overlay').forEach(x=>x.classList.remove('on'));document.querySelectorAll('[data-field]').forEach(x=>x.value={month:'Ottobre',date:'dal 01 al 31 Ottobre',offer:'Sorriso In Salute',service:'Check-up dentistico completo + Ortopanoramica',desc:'inclusi nella seduta di igiene',price:'90€',phone:'3471234567',address:'Via Sono Prova 19'}[x.dataset.field]);applyTheme('fucsia',document.querySelector('.pal'))}
-async function capture(scale=3){return html2canvas(poster,{scale,useCORS:true,backgroundColor:null})}
-pngBtn.onclick=async()=>{let c=await capture(3),a=document.createElement('a');a.download='family-smile-volantino-HD.png';a.href=c.toDataURL('image/png',1);a.click()}
-pdfBtn.onclick=async()=>{let c=await capture(3),{jsPDF}=window.jspdf,p=new jsPDF({unit:'mm',format:'a4'});p.addImage(c.toDataURL('image/jpeg',.98),'JPEG',0,0,210,297);p.save('family-smile-volantino-A4.pdf')}
-saveBtn.onclick=()=>{let data={theme:current,dirty,values:{}};document.querySelectorAll('[data-field]').forEach(x=>data.values[x.dataset.field]=x.value);localStorage.setItem('fsMasterPreset',JSON.stringify(data));alert('Preset salvato nel browser')}
+const T={fucsia:['fucsia.jpg','#ef0069'],blu:['blu.jpg','#137bc3'],acqua:['acqua.jpg','#0aa99b'],arancio:['arancio.jpg','#f06a21'],viola:['viola.jpg','#9a2bd1']}, names={fucsia:'Fucsia',blu:'Blu',acqua:'Acqua',arancio:'Arancio',viola:'Viola'};let theme='fucsia';
+function applyTheme(k,el){theme=k;poster.style.backgroundImage=`url('/assets/templates/${T[k][0]}')`;document.documentElement.style.setProperty('--pink',T[k][1]);document.querySelectorAll('.pal').forEach(x=>x.classList.remove('active'));if(el)el.classList.add('active')}
+Object.keys(T).forEach((k,i)=>{let d=document.createElement('div');d.className='pal'+(i?'':' active');d.innerHTML=`<div class="thumb" style="background-image:url('/assets/templates/${T[k][0]}')"></div>${names[k]}`;d.onclick=()=>applyTheme(k,d);palettes.appendChild(d)});applyTheme('fucsia',document.querySelector('.pal'));
+const base={month:69,dates:27,offer:49,service1:24,service2:22,desc:22,price:61,phone:25,address:20};
+function fit(el,max){let s=max;el.style.fontSize=s+'px';while(s>11&&(el.scrollWidth>el.clientWidth-8||el.scrollHeight>el.clientHeight-5)){s-=1;el.style.fontSize=s+'px'}}
+document.querySelectorAll('[data-k]').forEach(inp=>inp.oninput=e=>{let id=e.target.dataset.k,el=document.getElementById(id);el.textContent=e.target.value;fit(el,base[id])});
+window.addEventListener('load',()=>document.querySelectorAll('[data-k]').forEach(i=>fit(document.getElementById(i.dataset.k),base[i.dataset.k])));
+async function cap(scale=3){await document.fonts.ready;return html2canvas(poster,{scale,useCORS:true,backgroundColor:null})}
+png.onclick=async()=>{let c=await cap(3),a=document.createElement('a');a.download='family-smile-HD.png';a.href=c.toDataURL('image/png');a.click()};
+pdf.onclick=async()=>{let c=await cap(3),{jsPDF}=window.jspdf,p=new jsPDF({unit:'mm',format:'a4'});p.addImage(c.toDataURL('image/jpeg',.98),'JPEG',0,0,210,297);p.save('family-smile-A4.pdf')};
+save.onclick=()=>{let d={theme,values:{}};document.querySelectorAll('[data-k]').forEach(i=>d.values[i.dataset.k]=i.value);localStorage.setItem('fsFaithful',JSON.stringify(d));alert('Preset salvato')};
+reset.onclick=()=>location.reload();
 </script></body></html>

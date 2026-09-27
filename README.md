@@ -1,23 +1,10 @@
-# Family Smile Master Editor
+# Family Smile — Editor fedele
+Usa il master approvato come base e sostituisce solo le zone testuali interne, mantenendo pennellate, illustrazioni e composizione.
 
-Questa versione usa la locandina approvata come master grafico reale, non una ricostruzione HTML.
-
-## Avvio
+Avvio:
 ```bash
 docker compose up -d --build
 ```
+URL LAN: `http://IP-SERVER:8191`
 
-Apri:
-`http://IP-DEL-SERVER:8191`
-
-## Aggiornamento Git
-```bash
-git pull
-docker compose up -d --build
-```
-
-## Principio
-- il master iniziale è identico alla grafica approvata;
-- i campi vengono coperti/ridisegnati soltanto quando vengono modificati;
-- 5 master colore;
-- export PNG HD e PDF A4.
+Nota: i font brush (Kalam/Permanent Marker) e le librerie di export sono caricati da CDN.
