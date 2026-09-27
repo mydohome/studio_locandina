@@ -1,20 +1,13 @@
-# Family Smile Editor PRO
+# Family Smile Campaign Studio — SVG edition
+Template SVG bloccato, contenuti modificabili, 6 icone, 5 palette, export PNG HD/PDF A4.
 
-Avvio:
-```bash
+## Avvio
 docker compose up -d --build
-```
-Poi apri http://localhost:8080
 
-Funzioni:
-- layout protetto
-- testi/prezzo/telefono/indirizzo modificabili
-- 5 palette
-- catalogo SVG: check-up, sbiancamento, igiene, ortodonzia, implantologia, pediatrica
-- PNG HD 3x
-- PDF A4
-- preset salvabili nel browser
+Apri http://IP-SERVER:8080
 
-Nota: html2canvas e jsPDF sono caricati da CDN. Per installazione totalmente offline, scaricare le due librerie in `assets/vendor/` e sostituire gli URL CDN.
+## Aggiornamento da Git
+git pull
+docker compose up -d --build
 
-- Cinque miniature cliccabili della locandina (Fucsia, Blu, Verde acqua, Arancione, Viola), con evidenziazione della palette selezionata.
+Nota: jsPDF è caricato da CDN; l'export PNG è nativo SVG/canvas.
